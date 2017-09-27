@@ -36,6 +36,7 @@ public class RNDateTimeChooserModule extends ReactContextBaseJavaModule {
   public void show(@NonNull ReadableMap options, @NonNull final Callback cancelCallback, @NonNull final Callback pickedCallback) {
     final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRANCE);
     String titleText = options.getString("titleText");
+    String titleBgColor = options.getString("titleBgColor");
 
     new SingleDateAndTimePickerDialog.Builder(getCurrentActivity())
         .title(TextUtils.isEmpty(titleText) ? "Noddier" : titleText)
