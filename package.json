@@ -1,0 +1,37 @@
+{
+  "name": "react-native-datetime-chooser",
+  "description": "React Native DateTime native chooser component for iOS and Android.",
+  "main": "index.js",
+  "author": "Doko <doraemonfanclub@gmail.com>",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Clip-sub/react-native-datetime-chooser",
+  "bugs": "https://github.com/Clip-sub/react-native-datetime-chooser/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Clip-sub/react-native-datetime-chooser"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "actionsheet",
+    "picker",
+    "picker-view",
+    "datepicker",
+    "datapicker"
+  ],
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-prefer-object-spread": "^1.1.0",
+    "eslint-plugin-react": "^6.1.2"
+  },
+  "license": "MIT"
+}
