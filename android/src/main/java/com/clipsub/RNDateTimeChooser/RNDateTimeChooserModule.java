@@ -40,7 +40,6 @@ public class RNDateTimeChooserModule extends ReactContextBaseJavaModule {
 
     new SingleDateAndTimePickerDialog.Builder(getCurrentActivity())
         .title(TextUtils.isEmpty(titleText) ? "Noddier" : titleText)
-        .mustBeOnFuture()
         .backgroundColor(Color.WHITE)
         .mainColor(Color.parseColor(titleBgColor != null ? titleBgColor : "#642580"))
         .listener(new SingleDateAndTimePickerDialog.Listener() {
