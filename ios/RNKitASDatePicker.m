@@ -131,6 +131,8 @@ RCT_EXPORT_METHOD(showWithArgs:(NSDictionary *)args callback:(RCTResponseSenderB
 
     if (picker.pickerView) {
         UIDatePicker *datePicker = (UIDatePicker *)picker.pickerView;
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"FR"];
+        [datePicker setLocale:locale];
         [datePicker addTarget:self action:@selector(eventForDatePicker:) forControlEvents:UIControlEventValueChanged];
     }
 
