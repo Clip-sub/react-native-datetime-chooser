@@ -14,6 +14,7 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -33,24 +34,41 @@ public class RNDateTimeChooserModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void show(@NonNull ReadableMap options, @NonNull final Callback callback) {
-    final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRANCE);
+  public void show(@NonNull ReadableMap options, @NonNull final Callback callback) throws ParseException {
+    final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+
     String titleText = options.getString("titleText");
     String titleBgColor = options.getString("titleBgColor");
 
-    new SingleDateAndTimePickerDialog.Builder(getCurrentActivity())
-        .title(TextUtils.isEmpty(titleText) ? "Noddier" : titleText)
-        .backgroundColor(Color.WHITE)
-        .mainColor(Color.parseColor(titleBgColor != null ? titleBgColor : "#642580"))
-        .listener(new SingleDateAndTimePickerDialog.Listener() {
-          @Override
-          public void onDateSelected(Date date) {
-            String result = format.format(date);
-            WritableMap map = Arguments.createMap();
-            map.putString("type", "done");
-            map.putString("selectedDate", result);
-            callback.invoke(map);
-          }
-        }).display();
+    SingleDateAndTimePickerDialog.Builder builder = new SingleDateAndTimePickerDialog.Builder(getCurrentActivity());
+
+    builder.title(TextUtils.isEmpty(titleText) ? "" : titleText);
+    builder.backgroundColor(Color.WHITE);
+    builder.mainColor(Color.parseColor(titleBgColor != null ? titleBgColor : "#642580"));
+
+    Date minDate = new Date();
+    String minimumDate = options.getString("minimumDate");
+    if (minimumDate != null) {
+      minDate = format.parse(minimumDate);
+    }
+    builder.minDateRange(minDate);
+
+    Date maxDate = new Date();
+    String maximumDate = options.getString("maximumDate");
+    if (maximumDate != null) {
+      maxDate = format.parse(minimumDate);
+    }
+    builder.maxDateRange(maxDate);
+
+    builder.listener(new SingleDateAndTimePickerDialog.Listener() {
+      @Override
+      public void onDateSelected(Date date) {
+        String result = format.format(date);
+        WritableMap map = Arguments.createMap();
+        map.putString("type", "done");
+        map.putString("selectedDate", result);
+        callback.invoke(map);
+      }
+    }).display();
   }
 }

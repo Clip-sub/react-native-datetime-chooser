@@ -3,7 +3,7 @@
   "description": "React Native DateTime native chooser component for iOS and Android.",
   "main": "index.js",
   "author": "Doko <doraemonfanclub@gmail.com>",
-  "version": "1.0.2",
+  "version": "2.0.3",
   "homepage": "https://github.com/Clip-sub/react-native-datetime-chooser",
   "bugs": "https://github.com/Clip-sub/react-native-datetime-chooser/issues",
   "repository": {
