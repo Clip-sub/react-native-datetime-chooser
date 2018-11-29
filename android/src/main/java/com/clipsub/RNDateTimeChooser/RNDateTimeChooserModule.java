@@ -56,7 +56,7 @@ public class RNDateTimeChooserModule extends ReactContextBaseJavaModule {
     Date maxDate = new Date();
     String maximumDate = options.getString("maximumDate");
     if (maximumDate != null) {
-      maxDate = format.parse(minimumDate);
+      maxDate = format.parse(maximumDate);
     }
     builder.maxDateRange(maxDate);
 
